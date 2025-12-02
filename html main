@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Website</title>
+    <link rel="stylesheet" href="css main">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My GitHub Page</h1>
+        <p>Testing 123 Area RN</p>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>About This Site</h2>
+            <p> Testing area for what things will look like. Can you see this???
+                can add images, sections, html css and js so test later pls.
+                </p>
+
+            <a class="button" href="#">Learn More</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 My GitHub Website</p>
+    </footer>
+
+</body>
+</html>
