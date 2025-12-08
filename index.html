@@ -1,32 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Website</title>
-    <link rel="stylesheet" href="css main">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Force Calculator (Static)</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <div class="app-shell">
 
-    <header>
-        <h1>Welcome to My GitHub Page</h1>
-        <p>Testing 123 Area RN</p>
-    </header>
+        <!-- Top Nav -->
+        <header class="site-header">
+            <div class="container header-inner">
+                <div class="brand">Math Tools</div>
+                <nav class="top-nav">
+                    <a class="active" href="#">Starforcing</a>
+                    <a href="#">Cubing</a>
+                    <a href="#">Flaming</a>
+                </nav>
+            </div>
+        </header>
 
-    <main>
-        <section class="content">
-            <h2>About This Site</h2>
-            <p> Testing area for what things will look like. Can you see this???
-                can add images, sections, html css and js so test later pls.
-                </p>
+        <main class="main">
+            <div class="container main-layout">
 
-            <a class="button" href="#">Learn More</a>
-        </section>
-    </main>
+                <!-- Calculator Card -->
+                <section class="card calculator-card">
+                    <h1 class="card-title">Star Force – Simulator</h1>
 
-    <footer>
-        <p>gang violence throw something else here later</p>
-    </footer>
+                    <form class="sf-form" autocomplete="off">
+                        <!-- Row 1 -->
+                        <div class="form-row">
+                            <label for="item-level">Item Level</label>
+                            <input type="number" id="item-level" name="item-level" min="0" placeholder="e.g. 150" />
+                        </div>
 
+                        <div class="form-row">
+                            <label for="item-type">Item Type</label>
+                            <select id="item-type" name="item-type">
+                                <option value="normal">Normal</option>
+                                <option value="superior">Superior</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="form-row">
+                            <label for="star-catching">Star Catching</label>
+                            <select id="star-catching" name="star-catching">
+                                <option value="none">No star catching</option>
+                                <option value="enabled">+5% multiplicative</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="safeguard">Safeguard</label>
+                            <select id="safeguard" name="safeguard">
+                                <option value="off">No safeguard</option>
+                                <option value="on">Safeguard enabled</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="form-row">
+                            <label for="current-stars">Current Stars</label>
+                            <input type="number" id="current-stars" name="current-stars" min="0" max="29" />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="target-stars">Target Stars</label>
+                            <input type="number" id="target-stars" name="target-stars" min="1" max="30" />
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="form-row">
+                            <label for="mvp-discount">MVP Discount</label>
+                            <select id="mvp-discount" name="mvp-discount">
+                                <option value="none">None</option>
+                                <option value="silver">MVP Silver (3% off 1–16)</option>
+                                <option value="gold">MVP Gold (5% off 1–16)</option>
+                                <option value="diamond">MVP Diamond (10% off 1–16)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="server">Server</label>
+                            <select id="server" name="server">
+                                <option value="gms-30">GMS 30 Stars</option>
+                                <option value="kms">KMS</option>
+                                <option value="tms">TMS</option>
+                                <option value="tms-reboot">TMS Reboot</option>
+                                <option value="gms-pre30">GMS Before 30 Stars</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <fieldset class="form-row form-row--full">
+                            <legend>Event</legend>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" name="event-5-10-15" />
+                                    5/10/15 +2 Stars (Up to 10 stars)
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="event-30-discount" />
+                                    30% Meso Discount
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="event-30-boom" />
+                                    30% Boom Reduction
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Row 6 -->
+                        <div class="form-row form-row--full">
+                            <label for="trials">Trial for number of successes</label>
+                            <input type="number" id="trials" name="trials" min="1" placeholder="e.g. 1000" />
+                        </div>
+
+                        <!-- Button row -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-primary" id="calculate-btn">
+                                Calculate
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Side Info / Results Card -->
+                <section class="card info-card">
+                    <div class="info-message">
+                        <h2>Hello Mapler!</h2>
+                        <p>
+                            Implement calc logic here later
+                        </p>
+                    </div>
+
+                    <hr class="divider" />
+
+                    <div class="results-placeholder">
+                        <h3>Results placeholder</h3>
+                        <p>Bubbles for the following:</p>
+                        <ul>
+                            <li>Average meso cost</li>
+                            <li>Probability of success</li>
+                            <li>Expected booms</li>
+                            <li>Distribution over trials</li>
+                        </ul>
+                    </div>
+
+                    <div class="graph-placeholder"> 
+                        <p>Add interactable graph here w jscript that can let you see percentiles</p>
+                    </div>
+
+                    <hr class="divider" />
+
+                    <div class="footer-links">
+                        <p>Site footer placeholder</p>
+                        <p class="muted">
+                            Add links to any contact or something here
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>Luminent Pages SF calculator</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
