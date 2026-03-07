@@ -1,176 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Star Force Calculator (Static)</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Starforce Simulator</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
-    <div class="app-shell">
 
-        <!-- Top Nav -->
-        <header class="site-header">
-            <div class="container header-inner">
-                <div class="brand">Math Tools</div>
-                <nav class="top-nav">
-                    <a class="active" href="#">Starforcing</a>
-                    <a href="#">Cubing</a>
-                    <a href="#">Flaming</a>
-                </nav>
-            </div>
-        </header>
+<div class="app-shell">
 
-        <main class="main">
-            <div class="container main-layout">
+<header class="site-header">
+<div class="container header-inner">
 
-                <!-- Calculator Card -->
-                <section class="card calculator-card">
-                    <h1 class="card-title">Star Force – Simulator</h1>
+<div class="brand">
+Starforce Simulator
+</div>
 
-                    <form class="sf-form" autocomplete="off">
-                        <!-- Row 1 -->
-                        <div class="form-row">
-                            <label for="item-level">Item Level</label>
-                            <input type="number" id="item-level" name="item-level" min="0" placeholder="e.g. 150" />
-                        </div>
+</div>
+</header>
 
-                        <div class="form-row">
-                            <label for="item-type">Item Type</label>
-                            <select id="item-type" name="item-type">
-                                <option value="normal">Normal</option>
-                                <option value="superior">Superior</option>
-                            </select>
-                        </div>
 
-                        <!-- Row 2 -->
-                        <div class="form-row">
-                            <label for="star-catching">Star Catching</label>
-                            <select id="star-catching" name="star-catching">
-                                <option value="none">No star catching</option>
-                                <option value="enabled">+5% multiplicative</option>
-                            </select>
-                        </div>
+<main class="main">
+<div class="container main-layout">
 
-                        <div class="form-row">
-                            <label for="safeguard">Safeguard</label>
-                            <select id="safeguard" name="safeguard">
-                                <option value="off">No safeguard</option>
-                                <option value="on">Safeguard enabled</option>
-                            </select>
-                        </div>
+<!-- LEFT PANEL -->
+<div class="card">
 
-                        <!-- Row 3 -->
-                        <div class="form-row">
-                            <label for="current-stars">Current Stars</label>
-                            <input type="number" id="current-stars" name="current-stars" min="0" max="29" />
-                        </div>
+<h2 class="card-title">Simulation Settings</h2>
 
-                        <div class="form-row">
-                            <label for="target-stars">Target Stars</label>
-                            <input type="number" id="target-stars" name="target-stars" min="1" max="30" />
-                        </div>
+<form class="sf-form">
 
-                        <!-- Row 4 -->
-                        <div class="form-row">
-                            <label for="mvp-discount">MVP Discount</label>
-                            <select id="mvp-discount" name="mvp-discount">
-                                <option value="none">None</option>
-                                <option value="silver">MVP Silver (3% off 1–16)</option>
-                                <option value="gold">MVP Gold (5% off 1–16)</option>
-                                <option value="diamond">MVP Diamond (10% off 1–16)</option>
-                            </select>
-                        </div>
+<div class="form-row">
+<label>Item Level</label>
+<input id="level" type="number" value="150">
+</div>
 
-                        <div class="form-row">
-                            <label for="server">Server</label>
-                            <select id="server" name="server">
-                                <option value="gms-30">GMS 30 Stars</option>
-                                <option value="kms">KMS</option>
-                                <option value="tms">TMS</option>
-                                <option value="tms-reboot">TMS Reboot</option>
-                                <option value="gms-pre30">GMS Before 30 Stars</option>
-                            </select>
-                        </div>
+<div class="form-row">
+<label>Start Star</label>
+<input id="startStar" type="number" value="12">
+</div>
 
-                        <!-- Row 5 -->
-                        <fieldset class="form-row form-row--full">
-                            <legend>Event</legend>
-                            <div class="checkbox-group">
-                                <label>
-                                    <input type="checkbox" name="event-5-10-15" />
-                                    5/10/15 +2 Stars (Up to 10 stars)
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="event-30-discount" />
-                                    30% Meso Discount
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="event-30-boom" />
-                                    30% Boom Reduction
-                                </label>
-                            </div>
-                        </fieldset>
+<div class="form-row">
+<label>Target Star</label>
+<input id="targetStar" type="number" value="17">
+</div>
 
-                        <!-- Row 6 -->
-                        <div class="form-row form-row--full">
-                            <label for="trials">Trial for number of successes</label>
-                            <input type="number" id="trials" name="trials" min="1" placeholder="e.g. 1000" />
-                        </div>
+<div class="form-row">
+<label>Simulation Runs</label>
+<input id="tries" type="number" value="5000">
+</div>
 
-                        <!-- Button row -->
-                        <div class="form-actions">
-                            <button type="button" class="btn-primary" id="calculate-btn">
-                                Calculate
-                            </button>
-                        </div>
-                    </form>
-                </section>
+<div class="form-row">
+<label>MVP</label>
+<select id="mvp">
+<option>No</option>
+<option>Silver</option>
+<option>Gold</option>
+<option>Diamond+</option>
+</select>
+</div>
 
-                <!-- Side Info / Results Card -->
-                <section class="card info-card">
-                    <div class="info-message">
-                        <h2>Hello Mapler!</h2>
-                        <p>
-                            Implement calc logic here later
-                        </p>
-                    </div>
+<div class="form-row form-row--full">
+<fieldset>
 
-                    <hr class="divider" />
+<legend>Options</legend>
 
-                    <div class="results-placeholder">
-                        <h3>Results placeholder</h3>
-                        <p>Bubbles for the following:</p>
-                        <ul>
-                            <li>Average meso cost</li>
-                            <li>Probability of success</li>
-                            <li>Expected booms</li>
-                            <li>Distribution over trials</li>
-                        </ul>
-                    </div>
+<div class="checkbox-group">
 
-                    <div class="graph-placeholder"> 
-                        <p>Add interactable graph here w jscript that can let you see percentiles</p>
-                    </div>
+<label>
+<input type="checkbox" id="safe">
+Safeguard
+</label>
 
-                    <hr class="divider" />
+<label>
+<input type="checkbox" id="boomEvent">
+30% Boom Reduction
+</label>
 
-                    <div class="footer-links">
-                        <p>Site footer placeholder</p>
-                        <p class="muted">
-                            Add links to any contact or something here
-                        </p>
-                    </div>
-                </section>
+<label>
+<input type="checkbox" id="mesoEvent">
+30% Meso Discount
+</label>
 
-            </div>
-        </main>
+</div>
 
-        <footer class="site-footer">
-            <div class="container">
-                <p>Luminent Pages SF calculator</p>
-            </div>
-        </footer>
-    </div>
+</fieldset>
+</div>
+
+<div class="form-actions">
+<button class="btn-primary" type="submit">
+Run Simulation
+</button>
+</div>
+
+</form>
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+<div class="card info-card">
+
+<h2 class="card-title">Results</h2>
+
+<div id="results"></div>
+
+<hr class="divider">
+
+<canvas id="mesoChart"></canvas>
+
+<hr class="divider">
+
+<canvas id="boomChart"></canvas>
+
+</div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+Starforce Simulator
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
