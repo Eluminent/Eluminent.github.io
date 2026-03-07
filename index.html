@@ -1,137 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<title>Starforce Simulator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starforce Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
 
-<link rel="stylesheet" href="styles.css">
-
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">Starforce Simulator</div>
+        <nav class="top-nav">
+          <a href="#" class="active">Simulator</a>
+        </nav>
+      </div>
+    </header>
 
-<div class="app-shell">
+    <main class="main">
+      <div class="container main-layout">
+        <section class="card">
+          <h2 class="card-title">Simulation Settings</h2>
 
-<header class="site-header">
-<div class="container header-inner">
+          <form class="sf-form">
+            <div class="form-row">
+              <label for="level">Item Level</label>
+              <input id="level" type="number" min="1" value="150" />
+            </div>
 
-<div class="brand">
-Starforce Simulator
-</div>
+            <div class="form-row">
+              <label for="startStar">Start Star</label>
+              <input id="startStar" type="number" min="0" max="29" value="12" />
+            </div>
 
-</div>
-</header>
+            <div class="form-row">
+              <label for="targetStar">Target Star</label>
+              <input id="targetStar" type="number" min="1" max="30" value="17" />
+            </div>
 
+            <div class="form-row">
+              <label for="tries">Simulation Runs</label>
+              <input id="tries" type="number" min="1" value="1000" />
+            </div>
 
-<main class="main">
-<div class="container main-layout">
+            <div class="form-row">
+              <label for="mvp">MVP</label>
+              <select id="mvp">
+                <option>No</option>
+                <option>Silver</option>
+                <option>Gold</option>
+                <option>Diamond+</option>
+              </select>
+            </div>
 
-<!-- LEFT PANEL -->
-<div class="card">
+            <div class="form-row form-row--full">
+              <fieldset>
+                <legend>Options</legend>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" id="safe" /> Safeguard</label>
+                  <label><input type="checkbox" id="boomEvent" /> 30% Boom Reduction</label>
+                  <label><input type="checkbox" id="mesoEvent" /> 30% Meso Discount</label>
+                </div>
+              </fieldset>
+            </div>
 
-<h2 class="card-title">Simulation Settings</h2>
+            <div class="form-actions">
+              <button class="btn-primary" type="submit">Run Simulation</button>
+            </div>
+          </form>
+        </section>
 
-<form class="sf-form">
+        <aside class="card info-card">
+          <h2 class="card-title">Results</h2>
 
-<div class="form-row">
-<label>Item Level</label>
-<input id="level" type="number" value="150">
-</div>
+          <div id="results" class="results-placeholder">
+            <h3>Waiting for simulation</h3>
+            <p>Enter your settings and click Run Simulation.</p>
+          </div>
 
-<div class="form-row">
-<label>Start Star</label>
-<input id="startStar" type="number" value="12">
-</div>
+          <hr class="divider" />
 
-<div class="form-row">
-<label>Target Star</label>
-<input id="targetStar" type="number" value="17">
-</div>
+          <div class="form-row--full">
+            <canvas id="mesoChart"></canvas>
+          </div>
 
-<div class="form-row">
-<label>Simulation Runs</label>
-<input id="tries" type="number" value="5000">
-</div>
+          <hr class="divider" />
 
-<div class="form-row">
-<label>MVP</label>
-<select id="mvp">
-<option>No</option>
-<option>Silver</option>
-<option>Gold</option>
-<option>Diamond+</option>
-</select>
-</div>
+          <div class="form-row--full">
+            <canvas id="boomChart"></canvas>
+          </div>
+        </aside>
+      </div>
+    </main>
 
-<div class="form-row form-row--full">
-<fieldset>
+    <footer class="site-footer">
+      Starforce Simulator
+    </footer>
+  </div>
 
-<legend>Options</legend>
-
-<div class="checkbox-group">
-
-<label>
-<input type="checkbox" id="safe">
-Safeguard
-</label>
-
-<label>
-<input type="checkbox" id="boomEvent">
-30% Boom Reduction
-</label>
-
-<label>
-<input type="checkbox" id="mesoEvent">
-30% Meso Discount
-</label>
-
-</div>
-
-</fieldset>
-</div>
-
-<div class="form-actions">
-<button class="btn-primary" type="submit">
-Run Simulation
-</button>
-</div>
-
-</form>
-
-</div>
-
-
-<!-- RIGHT PANEL -->
-<div class="card info-card">
-
-<h2 class="card-title">Results</h2>
-
-<div id="results"></div>
-
-<hr class="divider">
-
-<canvas id="mesoChart"></canvas>
-
-<hr class="divider">
-
-<canvas id="boomChart"></canvas>
-
-</div>
-
-</div>
-</main>
-
-<footer class="site-footer">
-Starforce Simulator
-</footer>
-
-</div>
-
-<script src="script.js"></script>
-
+  <script src="code.js"></script>
 </body>
 </html>
