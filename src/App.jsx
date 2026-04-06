@@ -1,6 +1,10 @@
 import { useState, useRef } from "react";
 import "./App.css";
 import Chart from "chart.js/auto";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// import Starforce from "./pages/Starforce";
+// import Login from "./pages/Login";
 
 /* ================= DATA ================= */
 
@@ -418,6 +422,13 @@ function drawCharts(mesoData, boomData) {
 
             <canvas ref={boomChartRef}></canvas>
           </aside>
+        
+          {/* <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Starforce />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </BrowserRouter> */}
 
         </div>
       </main>
