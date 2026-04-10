@@ -6,7 +6,7 @@ import Starforce from "./pages/Starforce";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Eluminent.github.io">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/starforce" element={<Starforce />} />

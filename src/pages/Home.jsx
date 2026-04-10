@@ -23,7 +23,7 @@ export default function Home() {
           {/* LEFT SIDE */}
           <div className="profile">
             <img
-              src="/PFP.jpg"
+              src={`${import.meta.env.BASE_URL}PFP.jpg`}
               alt="profile"
               className="profile-img"
             />
